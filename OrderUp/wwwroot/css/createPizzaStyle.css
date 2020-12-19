@@ -1,0 +1,348 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+ul, li {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	color: black; /* teksto spalva */
+	font-family: Arial, Helvetica, sans-serif; /* šriftas */
+	font-size: 12px; /* teksto dydis */
+	background-color: #e3e3e3;
+}
+
+
+/* pagrindinis puslapio blokas */
+#body {
+	width: 100%;
+	margin: 0px auto; /* bloko centravimas puslapio viduje */
+}
+
+/* viršutinė puslapio dalis */
+#header {
+	width: 100%;
+	height: 70px;
+	background-color: #333;
+	
+	float: left;
+}
+
+/* turinio blokelis */
+#content {
+	width: 100%;
+	background-color: #fff;
+	display: flex;
+	overflow: hidden;
+	background-image: url("../images/double-bubble-outline.png");
+}
+
+/* pagrindinio meniu blokelis */
+#topMenu {
+	width: auto;
+	height: 40px;
+	float: right;
+	background-color: #333;
+	margin-top: 15px;
+}
+
+	#topMenu a {
+		color: #E3564F;
+		padding: 5px;
+		border-radius: 15px;
+		background: #333333;
+	}
+
+		#topMenu a:hover {
+			padding: 5px;
+			border: 1px solid silver;
+		}
+
+/* kairysis puslapio blokelis */
+#contentLeft {
+	width: 20%;
+	position: relative;
+	background-color: #adb5bd;
+}
+
+/* turinio blokelis */
+#contentRight {
+	width: 70%;
+	min-height: 700px; /* minimalus blokelio aukštis */
+	border-left: 1px solid silver;
+	position: relative;
+	border-right: 1px solid silver;
+}
+
+/* apatinė puslapio dalis */
+#footer {
+	width: 100%;
+	height: 40px;
+	float: left;
+	background-color: #333;
+}
+
+#topMenu li {
+	float: left; /* nustatome horizontalųjį meniu punktų lygiavimą */
+	list-style: none; /* paslepiame sąrašo stiliaus savybes */
+	margin: 12px 15px 12px 15px; /* nustatome meniu punktų ribas */
+}
+
+	#topMenu li a {
+		text-decoration: none; /* paslepiame nuorodos pabraukimą */
+	}
+
+		#topMenu li a:hover {
+			text-decoration: underline; /* nustatome nuorodos pabraukimą užvedus pele */
+		}
+
+		#topMenu li a.active {
+			text-decoration: underline; /* nustatome aktyvaus meniu punkto pabraukimą */
+		}
+
+#contentLeft li {
+	list-style: none;
+	margin: 10px 0px 10px 25px;
+}
+
+	#contentLeft li a {
+		text-decoration: none;
+	}
+
+		#contentLeft li a:hover {
+			text-decoration: underline;
+		}
+
+		#contentLeft li a.active {
+			text-decoration: underline;
+		}
+
+#contentLeft h2 {
+	font-size: 22px;
+	font-weight: normal;
+	letter-spacing: -0.5px;
+	margin: 10px 0px 0px 18px;
+}
+
+h2#pageTitle {
+	font-size: 26px;
+	margin: 10px 0px 0px 0px;
+	font-weight: normal;
+	border-bottom: solid 1px silver;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.newsItem {
+	border-bottom: 1px solid silver;
+}
+
+.newsItemLast {
+	border: 0px;
+}
+
+#contentRight p {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.newsItem p#title {
+	font-weight: bold;
+}
+
+#slogan {
+	margin: 20px 0px 0px 15px;
+	color: #E3564F;
+	font-size: 22px;
+	float: left;
+}
+
+a {
+	color: #ca4c44;
+}
+
+#pizzaPic {
+	height: 180px;
+	width: 180px;
+	margin-left: 20px;
+	margin-right: 20px;
+	float: left;
+}
+
+	#pizzaPic img {
+		width: 100%;
+		height: auto;
+	}
+
+#menuItem {
+	border: 1px solid silver;
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	float: left;
+	margin-left: 10px;
+	text-align: center;
+}
+
+#kiekis {
+	display: inline-block;
+}
+
+#item {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 180px;
+	margin-top: 10px;
+	margin-left: 20px;
+	text-align: center;
+	font-family: arial;
+	border: solid 1px silver;
+	float: left;
+	background-color: white;
+}
+
+	#item img {
+		width: 100%;
+		height: 150px;
+
+	}
+
+#price {
+	color: black;
+	font-size: 22px;
+}
+
+#item button {
+	border: none;
+	outline: 0;
+	padding: 12px;
+	color: white;
+	background-color: #000;
+	text-align: center;
+	cursor: pointer;
+	width: 100%;
+	font-size: 18px;
+	margin-top: 5px;
+}
+
+	#item button:hover {
+		opacity: 0.7;
+	}
+
+#contentOrder {
+	width: 20%;
+	float: left;
+	min-height: 100vh;
+	font-size: 16px;
+	font-weight: normal;
+	letter-spacing: -0.5px;
+	background-color: #adb5bd;
+	position: relative;
+}
+
+	#contentOrder h2 {
+		margin-top: 10px;
+		margin-left: 20px;
+	}
+
+#contentOrder {
+	width: 20%;
+	float: left;
+	min-height: 100vh;
+	font-size: 16px;
+	font-weight: normal;
+	letter-spacing: -0.5px;
+	background-color: #adb5bd;
+	position: relative;
+}
+
+	#contentOrder h2 {
+		margin-top: 10px;
+		margin-left: 20px;
+	}
+
+#emptyOrderImg {
+	width: 100%;
+	width: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	margin-top: 10px;
+}
+
+#orderItem {
+	float: left;
+	padding-left: 20px;
+	font-size: 16px;
+}
+
+#orderPrice {
+	float: right;
+	padding-right: 10px;
+}
+
+#orderItems {
+	width: 100%;
+	height: 30px;
+	border-bottom: 1px solid #333;
+	margin-top: 10px;
+	float: left;
+}
+#totalAmount {
+	padding-left: 20px;
+	float: left;
+}
+#totalPrice {
+	float: right;
+	margin-right: 10px;
+}
+
+#totals {
+	width: 100%;
+	height: 30px;
+	margin-top: 10px;
+	float: left;
+}
+#pageLinks{
+	float: left;
+	clear:left;
+	width: 100%;
+	margin-top: 40px;
+	display: flex;
+	justify-content: center;
+}
+#previousPage{
+	border: 1px solid black;
+	margin-right: 10px;
+}
+#nextPage{
+	border: 1px solid black;
+	margin-left: 10px;
+}
+
+#previousPage:link, #previousPage:visited {
+	background-color: #333;
+	color: white;
+	padding: 14px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+}
+.btn btn-default disabled {
+	pointer-events: none;
+	cursor: default;
+	text-decoration: none;
+	color: black;
+}
+
+
+#nextPage:link, #nextPage:visited {
+	background-color: #333;
+	color: white;
+	padding: 14px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+}

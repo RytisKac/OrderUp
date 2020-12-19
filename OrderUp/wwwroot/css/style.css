@@ -1,0 +1,214 @@
+@CHARSET "UTF-8";
+
+*{
+	margin:0px;
+	padding: 0px;
+}
+ul, li {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	color: #8A8985; /* teksto spalva */
+	font-family: Arial, Helvetica, sans-serif; /* šriftas */
+	font-size: 12px; /* teksto dydis */
+}
+
+/* pagrindinis puslapio blokas */
+#body {
+	width: 100%;
+	margin: 0px auto; /* bloko centravimas puslapio viduje */
+}
+
+/* viršutinė puslapio dalis */
+#header {
+	width: 100%;
+	height: 70px;
+	background-color: #333;
+	float: left;
+}
+
+/* turinio blokelis */
+#nice {
+	width: 100%;
+	background-color: #fff;
+	float: left;
+	background-image: url("/images/mainbg.jpg");
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* pagrindinio meniu blokelis */
+#topMenu {
+	width: auto;
+	height: 40px;
+	background-color: #333;
+	margin-top: 15px;
+	float:right;
+}
+#topMenu a{
+	color: #E3564F;
+	padding: 5px;
+	border-radius: 15px;
+	background: #333333;
+}
+
+#topMenu a:hover{
+	padding: 5px;
+	border: 1px solid silver;
+}
+
+/* turinio blokelis */
+#background {
+	width: 100%;
+	min-height: 600px; /* minimalus blokelio aukštis */
+	float: left; /* blokelio pozicija */
+	text-align: center;
+	vertical-align: middle;
+	color: white;
+	line-height: 600px;
+	font-family: Impact;
+	font-size: 45px;
+	height: 100vh;
+}
+
+/* apatinė puslapio dalis */
+#footer {
+	width: 100%;
+	height: 40px;
+	float: left;
+	background: #333;
+}
+
+#slogan{
+	margin: 20px 0px 0px 15px;
+	color: #E3564F;
+	font-size: 22px;
+	float: left;
+}
+
+#topMenu li {
+	float: left; /* nustatome horizontalųjį meniu punktų lygiavimą */
+	list-style: none; /* paslepiame sąrašo stiliaus savybes */
+	margin: 12px 15px 12px 15px; /* nustatome meniu punktų ribas */
+	
+}
+#topMenu a {
+	float: left; /* nustatome horizontalųjį meniu punktų lygiavimą */
+	list-style: none; /* paslepiame sąrašo stiliaus savybes */
+}
+#topMenu li a {
+	text-decoration: none; /* paslepiame nuorodos pabraukimą */
+}
+
+	#topMenu li a:hover {
+		text-decoration: underline; /* nustatome nuorodos pabraukimą užvedus pele */
+	}
+
+	#topMenu li a.active {
+		text-decoration: underline; /* nustatome aktyvaus meniu punkto pabraukimą */
+	}
+	#topMenu form {
+		float: left; /* nustatome horizontalųjį meniu punktų lygiavimą */
+	
+	}
+h2#pageTitle {
+	font-size: 26px;
+	margin: 10px 0px 0px 15px;
+	font-weight: normal;
+}
+
+div.login-logout-tab div.card-header {
+	padding: 0px 0px 12px 0px;
+}
+
+div.login-logout-tab ul.nav-tabs {
+	margin: 0px 0px -12px 0px;
+}
+
+div.login-logout-tab li.nav-item {
+	width: 50%;
+}
+
+div.login-logout-tab a.nav-link {
+	font-size: 25px;
+	color: #495057;
+	text-align: center;
+}
+
+div.card-content {
+	padding: 10px 20px;
+}
+
+/*login form*/
+div.login-form-icon {
+	text-align: center;
+}
+.loginTitle{
+	color: red;
+}
+.loginPartial {
+	margin-right:12px;
+	
+}
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+#t01 {
+	width: 60%;
+	background-color: #f1f1c1;
+	margin: 0 auto;
+	margin-top: 30px;
+	font-size: 16px;
+}
+
+	#t01 tr:nth-child(even) {
+		background-color: #eee;
+		color: black;
+	}
+
+	#t01 tr:nth-child(odd) {
+		background-color: #fff;
+		color: black;
+	}
+
+	#t01 th {
+		color: white;
+		background-color: #333;
+	}
+#footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 2.5rem;
+}
+#logoutButton { /* nustatome horizontalųjį meniu punktų lygiavimą */
+	list-style: none; /* paslepiame sąrašo stiliaus savybes */
+	text-decoration: none; /* paslepiame nuorodos pabraukimą */
+	color: #E3564F;
+	border-radius: 15px;
+	background: none !important;
+	border: none;
+	cursor: pointer;
+	margin-top: 5px;
+	margin-left: 30px;
+}
+#logoutButton:hover {
+
+	border: 1px solid silver;
+}
+#loginHeader {
+	margin: 0 auto;
+	width: 50%;
+	height: 150px;
+	padding: 10px 0;
+	text-align: center;
+}
+
+	#loginHeader h1 {
+		padding-top: 40px;
+		font-size: 40px;
+	}

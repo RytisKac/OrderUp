@@ -1,0 +1,49 @@
+﻿@model OrderUp.Models.Uzsakymas
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Uzsakymas</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UzsakymoData)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UzsakymoData)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Kaina)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Kaina)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrekiuKiekis)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrekiuKiekis)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FkKlientas)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FkKlientas.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PristatymoBudasNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PristatymoBudasNavigation.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

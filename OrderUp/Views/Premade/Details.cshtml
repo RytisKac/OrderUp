@@ -1,0 +1,23 @@
+﻿@using OrderUp.Models
+@model OrderUp.Models.Pica
+@{
+    ViewData["Title"] = "Info";
+}
+ <link rel="stylesheet" href="~/css/picaDetailsStyle.css" />
+ <div id="leftContent">
+     <img src="@Html.DisplayFor(model => model.Nuotrauka)" />
+ </div>
+<div id="aLine"></div>
+<div id="rightContent">
+    <h1 id="name">@Html.DisplayFor(model => model.Pavadinimas)</h1>
+    <p id="desc">@Html.DisplayFor(model => model.Aprasymas)</p>
+    <h2 id="pad">Padas: @Html.DisplayFor(model => model.PadasNavigation.Name)</h2>
+    <h2 id="type">Tipas: @Html.DisplayFor(model => model.TipasNavigation.Name)</h2>
+    <table id="customers">
+        <tr><th>Ingredientai</th></tr>
+        @foreach (PicosIngredientai item in ViewBag.PicosIng)
+        {
+            <tr><td>@item.FkIngredientai.Pavadinimas</td></tr>
+        }
+    </table>
+</div>

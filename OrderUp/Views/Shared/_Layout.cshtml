@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Klientas> SignInManager
+@inject UserManager<Klientas> UserManager
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/css/style.css" />
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+</head>
+<body>
+    <div id="header">
+        <h3 id="slogan">OrderUp</h3>
+        <div id="topMenu">
+            <ul>
+                <li><a href="@Url.Action("Index","Home")" title="Home">Pagrindinis</a></li>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li><a href="@Url.Action("Index", "Create")" title="Create Pizza">Susikurk pats</a></li>
+                }
+                else 
+                {
+                    <li><a href="@Url.Action("Login", "Account")" title="Create Pizza">Susikurk pats</a></li>
+                }
+                <li><a href="@Url.Action("PremadePizza", "Premade")" title="Kontaktai">Paruoštas meniu</a></li>
+                <li><a href="@Url.Action("Index", "About")" title="About">Apie mus</a></li>
+                <li><partial name="_LoginPartial" /></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="content">
+        @RenderBody()
+    </div>
+
+    <div id="footer">
+
+    </div>
+    @RenderSection("Scripts", false);
+</body>
+</html>
+

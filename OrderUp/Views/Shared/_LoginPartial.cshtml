@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<Klientas> SignInManager
+@inject UserManager<Klientas> UserManager
+
+    <link rel="stylesheet" href="~/css/style.css"/>
+    <ul class="navbar-nav">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            //<a asp-controller="Account"  asp-action="Logout" title="Logout">Atsijungti</a>
+            <a href="@Url.Action("Index", "Order")">Mano užsakymai</a>
+            <form asp-controller="account" asp-action="logout" method="post">
+                <button id="logoutButton" type="submit">Atsijungti</button>
+            </form>
+        }
+        else
+        {
+            <a id="loginPartial" href="@Url.Action("Login","Account")" title="Home">Prisijungti</a>
+            <a  href="@Url.Action("Register","Account")" title="Home">Registruotis</a>
+        }
+    </ul>

@@ -1,0 +1,69 @@
+﻿@using OrderUp.Models
+@using OrderUp.Helpers
+@*@model IEnumerable<Pica>;*@ 
+@model OrderUp.Models.PremadeViewModel
+@{
+    ViewData["Title"] = "PremadePizza";
+}
+
+<link rel="stylesheet" href="~/css/premadestyle.css"/>
+
+<div id="content">
+    <div id="contentLeft">
+        <h2>Tipai</h2>
+        <ul>
+            @foreach(PicosTipas item in Model.picosTipai)
+            {
+                <li><a>@item.Name</a></li>
+            }
+        </ul>
+    </div>
+
+    <div id="contentRight">
+        <h2 id="pageTitle">Meniu</h2>
+        @foreach (Pica pica in Model.picos)
+        {
+           
+                <div id="menuItem">
+                    <div id="pizzaPic">
+                        <img src="@pica.Nuotrauka" />
+                    </div>
+                    <h1>@pica.Pavadinimas</h1>
+                    <p id="desc">@pica.Aprasymas</p>
+                    <div id="price">
+                        <p id="itemPrice" name="price">Kaina: @pica.Kaina €</p>
+                        <form asp-controller="Premade" asp-action="Add" method="post">
+                            <input type="number" name="amount" id="amountInput" min="1" placeholder="1" />
+                            <p><button type="submit" name="id" value="@pica.Id">Pridėti</button></p>
+                        </form>
+
+                        <a href=@Url.Action("Details", "Premade",new { id = pica.Id })><p><button>Info</button></p></a>
+                    </div>  
+                </div>
+            
+        }
+    </div>
+    <div id="contentOrder">
+        <h2>Užsakymas:</h2>
+        <a href="@Url.Action("Complete", "Order")">Vykdyti</a>
+        @if (Model.shoppingCart != null)
+        {
+            @foreach (ShoppingCart item in Model.shoppingCart)
+            {
+                <div id="orderItems">
+                    <p id="orderItem">@item.FkPica.Pavadinimas</p>
+                    <p id="orderPrice">@item.Kiekis x @item.FkPica.Kaina€</p>
+                </div>
+            }
+
+        }
+        else
+        {
+            <img id="emptyOrderImg" src="~/images/emptyOrder.png" />
+        }
+    <div id="totals">
+        <h3 id="totalAmount">Kiekis: @Html.CartCount(Model.shoppingCart)</h3>
+        <h3 id="totalPrice">Kaina: @Html.CartPrice(Model.shoppingCart)€</h3>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+﻿@using OrderUp.Models
+@using OrderUp.Helpers
+@*@model PaginatedList<OrderUp.Models.Ingredientai>*@
+@model OrderUp.Models.CreateViewModel
+
+@{
+    ViewData["Title"] = "Create Pizza";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/createPizzaStyle.css" />
+    <title>@ViewData["Title"]</title>
+</head>
+<div id="content">
+    <div id="contentLeft">
+        <h2>Ingredientai</h2>
+        <ul>
+            @foreach(IngredientoTipas item in Model.ingredientoTipai)
+            {
+                <li><a>@item.Name</a></li>
+            }
+        </ul>
+        
+    </div>
+    <div id="contentRight">
+        <h2 id="pageTitle">Susikurk pats</h2>
+        @if (Model.ingredientai.Count() > 0)
+        {
+            @foreach (Ingredientai ingredientas in Model.ingredientai)
+            {
+                <div id="item">
+                    <img src=@ingredientas.Nuotrauka>
+                    <h1>@ingredientas.Pavadinimas</h1>
+                    <p id="price">@ingredientas.Kaina €</p>
+                    <input type="text" placeholder="Kiekis: 1 = @ingredientas.Matas g" name="amount" id="amount">
+                    <p><button>Pridėti</button></p>
+                </div>
+            }
+
+            <div id="pageLinks">
+                @{
+                    var prevDisabled = !Model.ingredientai.HasPreviousPage ? "disabled" : "";
+                    var nextDisabled = !Model.ingredientai.HasNextPage ? "disabled" : "";
+                }
+
+
+                <a asp-action="Index"
+                   asp-route-pageNumber="@(Model.ingredientai.PageIndex - 1)"
+                   class="btn btn-default @prevDisabled"
+                   id="previousPage">
+                    Previous
+                </a>
+                <a asp-action="Index"
+                   asp-route-pageNumber="@(Model.ingredientai.PageIndex + 1)"
+                   class="btn btn-default @nextDisabled"
+                   id="nextPage">
+                    Next
+                </a>
+            </div>
+        }
+        else
+        {
+            <h2 id="pageTitle">Atsiprašome ingrendientų nėra</h2>
+        }
+
+    </div>
+
+
+    <div id="contentOrder">
+        <h2>Užsakymas:</h2>
+
+        @if (Model.shoppingCart != null)
+        {
+            @foreach (ShoppingCart item in Model.shoppingCart)
+            {
+                <div id="orderItems">
+                    <p id="orderItem">@item.FkPica.Pavadinimas</p>
+                    <p id="orderPrice">@item.Kiekis x @item.FkPica.Kaina€</p>
+                </div>
+            }
+        }
+        else
+        {
+            <img id="emptyOrderImg" src="~/images/emptyOrder.png" />
+        }
+    <div id="totals">
+        <h3 id="totalAmount">Kiekis: @Html.CartCount(Model.shoppingCart)</h3>
+        <h3 id="totalPrice">Kaina: @Html.CartPrice(Model.shoppingCart)€</h3>
+    </div>
+    </div>
+
+</div>
+ 

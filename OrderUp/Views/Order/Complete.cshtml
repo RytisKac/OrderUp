@@ -1,0 +1,41 @@
+﻿@*
+
+*@
+@{
+}
+@using OrderUp.Models
+@using OrderUp.Helpers
+@model OrderUp.Models.OrderCompleteViewModel
+
+<link rel="stylesheet" href="~/css/OrderCompletecss.css">
+<div class="row">
+    <div class="col-75">
+        <div class="container">
+            <form asp-action="Create">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="row">
+                    <div class="col-50">    
+                        <h1 class="header">Užbaigti užsakymą</h1>
+                        <label asp-for="VardasPavarde">Pilnas vardas</label>
+                        <input type="text" asp-for="VardasPavarde">
+                        <label asp-for="Adresas">Adresas</label>
+                        <input type="text" asp-for="Adresas">
+                        <label asp-for="Telefonas">Telefonas</label>
+                        <input type="text" placeholder="860000000" asp-for="Telefonas">
+                        @foreach (var pristatymoBudas in Model.pristatymoBudas)
+                        {
+                            <input type="radio" value="@pristatymoBudas.Id" asp-for="pristatymoBudas" /><p>@pristatymoBudas.Name</p><br />
+                        }
+
+                    </div>
+
+
+
+                </div>
+                <input type="submit" value="Continue to checkout" id="pristatymobudas" class="btn">
+            </form>
+        </div>  
+    </div>
+
+   
+</div>

@@ -1,0 +1,52 @@
+﻿@using OrderUp.Models
+@model IEnumerable<OrderUp.Models.Uzsakymas>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="loginHeader">
+<h1>Mano užsakymai</h1>
+</div>
+
+<table id="t01">
+    <thead>
+        <tr>
+            <th>
+                Data
+            </th>
+            <th>
+                Kaina
+            </th>
+            <th>
+                Kiekis
+            </th>
+            <th>
+                Pristatymo Būdas
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        if (item.FkKlientasid.Equals(ViewData["UserId"]))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UzsakymoData)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kaina)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrekiuKiekis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PristatymoBudasNavigation.Name)
+                </td>
+            </tr>
+        }
+    }
+
+</table>
