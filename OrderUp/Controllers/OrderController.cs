@@ -69,24 +69,39 @@ namespace OrderUp.Controllers
             Klientas user = await _userManager.GetUserAsync(User);
             string id = user?.Id;
             var cart = _context.ShoppingCart.Where(a => a.FkKlientasid == id).ToList();
-            
-            var completeOrder = new Uzsakymas 
-            { VardasPavarde = order.VardasPavarde,
-                Adresas = order.Adresas,
-                Telefonas = order.Telefonas,
-                PristatymoBudas = order.PristatymoBudas,
-                FkKlientasid = id,
-                Kaina = getCartPrice(id),
-                PrekiuKiekis = getCartCount(id),
-                UzsakymoData = DateTime.Now};
-
             if (ModelState.IsValid)
             {
+                var completeOrder = new Uzsakymas
+                {
+                    VardasPavarde = order.VardasPavarde,
+                    Adresas = order.Adresas,
+                    Telefonas = order.Telefonas,
+                    PristatymoBudas = order.PristatymoBudas,
+                    FkKlientasid = id,
+                    Kaina = getCartPrice(id),
+                    PrekiuKiekis = getCartCount(id),
+                    UzsakymoData = DateTime.Now
+                };
+
                 _context.Add(completeOrder);
                 await _context.SaveChangesAsync();
+
+                foreach(var cartitem in cart)
+                {
+                    var orderitem = new UzsakymoPreke { Kiekis = cartitem.Kiekis, FkPicaid = cartitem.FkPicaid, FkUzsakymasid = completeOrder.Id };
+                    _context.Add(orderitem);
+                    await _context.SaveChangesAsync();
+                    _context.Remove(cartitem);
+                    await _context.SaveChangesAsync();
+                }
+
                 return RedirectToAction("Index", "Order");
             }
-            return RedirectToAction("Complete", "Order");
+
+            order.pristatymoBudas = _context.PristatymoBudas.ToList();
+            order.picos = _context.Pica.ToList();
+            order.shoppingCart = _context.ShoppingCart.Where(a => a.FkKlientasid == id).ToList();
+            return View("Complete", order);
         }
 
         // GET: Order/Edit/5

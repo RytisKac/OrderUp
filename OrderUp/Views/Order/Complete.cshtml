@@ -12,16 +12,20 @@
     <div class="col-75">
         <div class="container">
             <form asp-action="Create">
-                <div asp-validation-summary="All" class="text-danger"></div>
+                
                 <div class="row">
-                    <div class="col-50">    
+                    <div class="col-50">
                         <h1 class="header">Užbaigti užsakymą</h1>
                         <label asp-for="VardasPavarde">Pilnas vardas</label>
+                        <span asp-validation-for="VardasPavarde" class="text-danger"></span>
                         <input type="text" asp-for="VardasPavarde">
                         <label asp-for="Adresas">Adresas</label>
+                        <span asp-validation-for="Adresas" class="text-danger"></span>
                         <input type="text" asp-for="Adresas">
                         <label asp-for="Telefonas">Telefonas</label>
+                        <span asp-validation-for="Telefonas" class="text-danger"></span>
                         <input type="text" placeholder="860000000" asp-for="Telefonas">
+                        <span asp-validation-for="pristatymoBudas" class="text-danger"></span><br/>
                         @foreach (var pristatymoBudas in Model.pristatymoBudas)
                         {
                             <input type="radio" value="@pristatymoBudas.Id" asp-for="pristatymoBudas" /><p>@pristatymoBudas.Name</p><br />

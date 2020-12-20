@@ -19,7 +19,7 @@ namespace OrderUp.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Slaptažodis ir patvirtinimo slaptažodis nesutampa")]
         public string ConfirmPassword { get; set; }
     }
 }

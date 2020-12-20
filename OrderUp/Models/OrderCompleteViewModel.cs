@@ -8,15 +8,16 @@ namespace OrderUp.Models
 {
     public class OrderCompleteViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Nenurodytas pristatymo būdas")]
         public int? PristatymoBudas { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Nenurodytas adresas")]
         public string Adresas { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Nenurodytas telefono numeris")]
+        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Įvesti galima tik skaičius")]
         public int Telefonas { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Nenurodyta vardas ir parvardė")]
         public string VardasPavarde { get; set; }
 
         public List<Pica> picos { get; set; }
