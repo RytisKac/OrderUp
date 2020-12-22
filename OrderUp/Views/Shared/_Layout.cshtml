@@ -21,10 +21,12 @@
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <li><a href="@Url.Action("Index", "Create")" title="Create Pizza">Susikurk pats</a></li>
+                    <li><a href="@Url.Action("MyPizza", "Premade")" title="My Pizza">Mano picos</a></li>
                 }
-                else 
+                else
                 {
                     <li><a href="@Url.Action("Login", "Account")" title="Create Pizza">Susikurk pats</a></li>
+                    <li><a href="@Url.Action("Login", "Premade")" title="My Pizza">Mano picos</a></li>
                 }
                 <li><a href="@Url.Action("PremadePizza", "Premade")" title="Kontaktai">Paruoštas meniu</a></li>
                 <li><a href="@Url.Action("Index", "About")" title="About">Apie mus</a></li>

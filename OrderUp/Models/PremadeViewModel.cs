@@ -10,5 +10,6 @@ namespace OrderUp.Models
         public List<PicosTipas> picosTipai { get; set; }
         public List<Pica> picos { get; set; }
         public List<ShoppingCart> shoppingCart { get; set; }
+        public List<Pica> manoPicos { get; set; }
     }
 }

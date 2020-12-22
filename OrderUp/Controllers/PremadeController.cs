@@ -31,6 +31,20 @@ namespace OrderUp.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> MyPizza()
+        {
+            Klientas user = await userManager.GetUserAsync(User);
+            string id = user?.Id;
+            var entities = new restaurant_dbContext();
+            ViewBag.ShoppingCart = entities.ShoppingCart.Where(a => a.FkKlientasid == id);
+            PremadeViewModel model = new PremadeViewModel();
+            model.picosTipai = entities.PicosTipas.ToList();
+            model.picos = entities.Pica.ToList();
+            model.manoPicos = entities.Pica.Where(a => a.Klientas == id).ToList();
+            model.shoppingCart = entities.ShoppingCart.Where(a => a.FkKlientasid == id).ToList();
+            return View(model);
+        }
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -76,6 +90,18 @@ namespace OrderUp.Controllers
                 product.Kiekis = product.Kiekis + kiekisInt;
                 context.SaveChanges();
             }
+            return RedirectToAction("PremadePizza", "Premade");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            Klientas user = await userManager.GetUserAsync(User);
+            string userid = user?.Id;
+            var preke = context.ShoppingCart.FirstOrDefault(a => a.Id == id);
+
+            context.ShoppingCart.Remove(preke);
+            context.SaveChanges();
             return RedirectToAction("PremadePizza", "Premade");
         }
     }

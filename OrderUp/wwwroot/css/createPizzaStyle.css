@@ -247,22 +247,6 @@ a {
 		margin-left: 20px;
 	}
 
-#contentOrder {
-	width: 20%;
-	float: left;
-	min-height: 100vh;
-	font-size: 16px;
-	font-weight: normal;
-	letter-spacing: -0.5px;
-	background-color: #adb5bd;
-	position: relative;
-}
-
-	#contentOrder h2 {
-		margin-top: 10px;
-		margin-left: 20px;
-	}
-
 #emptyOrderImg {
 	width: 100%;
 	width: 100px;
@@ -305,44 +289,4 @@ a {
 	margin-top: 10px;
 	float: left;
 }
-#pageLinks{
-	float: left;
-	clear:left;
-	width: 100%;
-	margin-top: 40px;
-	display: flex;
-	justify-content: center;
-}
-#previousPage{
-	border: 1px solid black;
-	margin-right: 10px;
-}
-#nextPage{
-	border: 1px solid black;
-	margin-left: 10px;
-}
-
-#previousPage:link, #previousPage:visited {
-	background-color: #333;
-	color: white;
-	padding: 14px 25px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-}
-.btn btn-default disabled {
-	pointer-events: none;
-	cursor: default;
-	text-decoration: none;
-	color: black;
-}
-
-
-#nextPage:link, #nextPage:visited {
-	background-color: #333;
-	color: white;
-	padding: 14px 25px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-}
+	

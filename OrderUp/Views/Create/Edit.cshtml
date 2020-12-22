@@ -1,0 +1,70 @@
+﻿@using OrderUp.Models
+@using OrderUp.Helpers
+@*@model PaginatedList<OrderUp.Models.Ingredientai>*@
+@model OrderUp.Models.CreateViewModel
+
+@{
+    ViewData["Title"] = "Create Pizza";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/createPizzaStyle.css" />
+    <title>@ViewData["Title"]</title>
+</head>
+<div id="content">
+    <div id="contentLeft">
+        <h2>Ingredientai</h2>
+        <ul>
+            @foreach (IngredientoTipas item in Model.ingredientoTipai)
+            {
+                <li><a>@item.Name</a></li>
+            }
+        </ul>
+
+    </div>
+    <div id="contentRight">
+        <h2 id="pageTitle">Susikurk pats</h2>
+            @foreach (Ingredientai ingredientas in Model.ingredientai)
+            {
+                <div id="item">
+                    <img src=@ingredientas.Nuotrauka>
+                    <h1>@ingredientas.Pavadinimas</h1>
+                    <p id="price">@ingredientas.Kaina €</p>
+                    <form asp-action="Edit">
+                        <input type="hidden" value="@ingredientas.Id" asp-for="ingId" />
+                        <input type="hidden" asp-for="Id" />
+                        <span asp-validation-for="Kiekis" class="text-danger"></span>
+                        <input type="text" placeholder="Kiekis: 1 = @ingredientas.Matas g" asp-for="Kiekis">
+                        <p><button type="submit">Pridėti</button></p>
+                    </form>
+                </div>
+            }
+        </div>
+    <div id="contentOrder">
+        <h2>Pica:</h2>
+
+        @if (Model.picosIngredientai != null)
+        {
+            @foreach (PicosIngredientai item in Model.picosIngredientai)
+            {
+                <div id="orderItems">
+                    <p id="orderItem">@item.FkIngredientai.Pavadinimas</p>
+                    <p id="orderPrice">@item.Kiekis x @item.FkIngredientai.Kaina€</p>
+                    <form asp-controller="Create" asp-action="Delete" method="post">
+                        <button type="submit" name="id" value="@item.Id" style="margin-left: 10px; background-color: darkred;">X</button>
+                    </form>
+                </div>
+            }
+        }
+        else
+        {
+            <img id="emptyOrderImg" src="~/images/emptyOrder.png" />
+        }
+        <div id="totals">
+            <h3 id="totalAmount">Kiekis: @Html.IngredientuKiekis(Model.picosIngredientai)</h3>
+            <h3 id="totalPrice">Kaina: @Html.PizzaPrice(Model.picosIngredientai)€</h3>
+        </div>
+    </div>
+
+</div>
+

@@ -44,16 +44,22 @@
         }
     </div>
     <div id="contentOrder">
-        <h2>Užsakymas:</h2>
-        <a href="@Url.Action("Complete", "Order")">Vykdyti</a>
+        <h2 style="float: left;">Užsakymas:</h2>
+        @if (Model.shoppingCart.Count != 0)
+        {
+            <a href="@Url.Action("Complete", "Order")" style="float: right; margin-top: 15px;">Vykdyti</a>
+        }
         @if (Model.shoppingCart != null)
         {
             @foreach (ShoppingCart item in Model.shoppingCart)
             {
-                <div id="orderItems">
-                    <p id="orderItem">@item.FkPica.Pavadinimas</p>
-                    <p id="orderPrice">@item.Kiekis x @item.FkPica.Kaina€</p>
-                </div>
+            <div id="orderItems">
+                <p id="orderItem">@item.FkPica.Pavadinimas</p>
+                <p id="orderPrice">@item.Kiekis x @item.FkPica.Kaina€</p>
+                <form asp-controller="Premade" asp-action="Delete" method="post">
+                    <button type="submit" name="id" value="@item.Id" style="margin-left: 10px; background-color: darkred;">X</button>
+                </form>
+            </div>
             }
 
         }
@@ -61,9 +67,9 @@
         {
             <img id="emptyOrderImg" src="~/images/emptyOrder.png" />
         }
-    <div id="totals">
-        <h3 id="totalAmount">Kiekis: @Html.CartCount(Model.shoppingCart)</h3>
-        <h3 id="totalPrice">Kaina: @Html.CartPrice(Model.shoppingCart)€</h3>
-    </div>
+        <div id="totals">
+            <h3 id="totalAmount">Kiekis: @Html.CartCount(Model.shoppingCart)</h3>
+            <h3 id="totalPrice">Kaina: @Html.CartPrice(Model.shoppingCart)€</h3>
+        </div>
     </div>
 </div>

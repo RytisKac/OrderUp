@@ -90,7 +90,7 @@ namespace OrderUp.Controllers
                 {
                     var orderitem = new UzsakymoPreke { Kiekis = cartitem.Kiekis, FkPicaid = cartitem.FkPicaid, FkUzsakymasid = completeOrder.Id };
                     _context.Add(orderitem);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();  
                     _context.Remove(cartitem);
                     await _context.SaveChangesAsync();
                 }

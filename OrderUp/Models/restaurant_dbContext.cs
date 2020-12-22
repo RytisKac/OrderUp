@@ -144,6 +144,10 @@ namespace OrderUp.Models
                     .HasColumnName("padas")
                     .HasColumnType("int(11)")
                     .HasDefaultValueSql("'NULL'");
+                entity.Property(e => e.Klientas)
+                    .HasColumnName("Fk_klientas")
+                    .HasColumnType("varchar(767)")
+                    .HasDefaultValue("NULL");
 
                 entity.Property(e => e.Pavadinimas)
                     .HasColumnName("pavadinimas")
@@ -164,6 +168,11 @@ namespace OrderUp.Models
                     .WithMany(p => p.Pica)
                     .HasForeignKey(d => d.Tipas)
                     .HasConstraintName("pica_ibfk_2");
+
+                entity.HasOne(d => d.KlientasNavigation)
+                    .WithMany(p => p.Pica)
+                    .HasForeignKey(d => d.Klientas)
+                    .HasConstraintName("picos_klientas");
             });
 
 

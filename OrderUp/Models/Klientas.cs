@@ -15,5 +15,6 @@ namespace OrderUp.Models
 
         public virtual ICollection<Uzsakymas> Uzsakymas { get; set; }
         public virtual ICollection<ShoppingCart> ShoppingCart { get; set; }
+        public virtual ICollection<Pica> Pica { get; set; }
     }
 }

@@ -18,8 +18,10 @@ namespace OrderUp.Models
         public int? Padas { get; set; }
         public int? Tipas { get; set; }
         public string Nuotrauka { get; set; }
+        public string Klientas { get; set; }
         public virtual Padas PadasNavigation { get; set; }
         public virtual PicosTipas TipasNavigation { get; set; }
+        public virtual Klientas KlientasNavigation { get; set; }
         public virtual ICollection<PicosIngredientai> PicosIngredientai { get; set; }
         public virtual ICollection<UzsakymoPreke> UzsakymoPreke { get; set; }
         public virtual ICollection<ShoppingCart> ShoppingCart { get; set; }
